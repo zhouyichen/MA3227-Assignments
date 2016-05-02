@@ -127,16 +127,16 @@ class NonelinearBVP:
 			sy = v
 			sv = f(x, y, v)
 			sz = w
-			sw = fv(x, y, v) * z + fv(x, y, v) * w
+			sw = fy(x, y, v) * z + fv(x, y, v) * w
 			y0 = y + h * sy
 			v0 = v + h * sv
 			z0 = z + h * sz
 			w0 = w + h * sw
 			print 'y* =', y0, 'v* =', v0, 'z* =', z0, 'w* =', w0
 			v += (sv + f(x1, y0, v0)) * h / 2
-			y += (sy + v) * h / 2
-			w += (sw + fy(x1, y, v) * z0 + fv(x1, y, v) * w0) * h / 2
-			z += (sz + w) * h / 2
+			y += (sy + v0) * h / 2
+			w += (sw + fy(x1, y0, v0) * z0 + fv(x1, y0, v0) * w0) * h / 2
+			z += (sz + w0) * h / 2
 			print 'y =', y, 'v =', v, 'z =', z, 'w =', w
 			x = x1
 			y_list.append(y)
